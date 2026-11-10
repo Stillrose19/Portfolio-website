@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio // Design</title>
+	<!-- Google Fonts: Cormorant Garamond for elegant serif headings, Plus Jakarta Sans for clean body text -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+	<style>
+		:root {
+			--bg-color: #08090c;
+			--text-color: #f3f4f6;
+			--text-muted: #9ca3af;
+			--border-color: rgba(255, 255, 255, 0.1);
+			--accent-glow: rgba(56, 189, 248, 0.15);
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			background-color: var(--bg-color);
+			color: var(--text-color);
+			font-family: 'Plus Jakarta Sans', sans-serif;
+			line-height: 1.6;
+			overflow-x: hidden;
+		}
+
+		h1, h2, h3, .serif-text {
+			font-family: 'Cormorant Garamond', serif;
+			font-weight: 400;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+			transition: opacity 0.2s ease;
+		}
+
+		a:hover {
+			opacity: 0.7;
+		}
+
+		/* Container */
+		.container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 0 2rem;
+		}
+
+		/* Navigation */
+		nav {
+			padding: 2.5rem 0;
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.nav-links {
+			display: flex;
+			gap: 2rem;
+			font-size: 0.9rem;
+			letter-spacing: 0.05em;
+			color: var(--text-muted);
+		}
+
+		.nav-links a:hover {
+			color: var(--text-color);
+		}
+
+		/* Hero Section */
+		header {
+			position: relative;
+			padding-bottom: 4rem;
+		}
+
+		.hero-banner {
+			width: 100%;
+			height: 380px;
+			border-radius: 4px;
+			overflow: hidden;
+			position: relative;
+			background-size: cover;
+			background-position: center;
+			/* <!-- PASTE YOUR HERO BANNER IMAGE LINK BELOW --> */
+			background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop');
+		}
+
+		.hero-banner::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(to bottom, rgba(8,9,12,0.1), var(--bg-color));
+		}
+
+		.logo-title {
+			position: absolute;
+			bottom: 2.5rem;
+			left: 0;
+			font-size: 1.5rem;
+			letter-spacing: 0.05em;
+		}
+
+		.hero-tagline {
+			text-align: center;
+			max-width: 650px;
+			margin: 3rem auto 5rem auto;
+			font-size: 1.25rem;
+			color: var(--text-muted);
+			line-height: 1.5;
+		}
+
+		/* Divider Line */
+		.divider {
+			width: 100%;
+			height: 1px;
+			background-color: var(--border-color);
+			margin: 4rem 0;
+		}
+
+		/* Work Section */
+		.section-title {
+			text-align: center;
+			font-size: 2rem;
+			margin-bottom: 3rem;
+			letter-spacing: 0.05em;
+		}
+
+		.work-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2.5rem;
+		}
+
+		.work-card {
+			background: #111318;
+			border-radius: 8px;
+			overflow: hidden;
+			border: 1px solid var(--border-color);
+			transition: transform 0.3s ease, border-color 0.3s ease;
+		}
+
+		.work-card:hover {
+			border-color: rgba(255, 255, 255, 0.3);
+			transform: translateY(-4px);
+		}
+
+		.work-image {
+			width: 100%;
+			height: 320px;
+			object-fit: cover;
+		}
+
+		.work-info {
+			padding: 1.5rem;
+		}
+
+		.work-info h3 {
+			font-size: 1.25rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.work-info p {
+			font-size: 0.9rem;
+			color: var(--text-muted);
+		}
+
+		/* About Section */
+		.about-section {
+			display: grid;
+			grid-template-columns: 1fr 1.2fr;
+			gap: 4rem;
+			align-items: center;
+			padding: 2rem 0;
+		}
+
+		.about-img-container {
+			border: 1px solid rgba(212, 175, 55, 0.3); /* Subtle warm gold frame matching screenshot */
+			padding: 8px;
+			border-radius: 4px;
+		}
+
+		.about-image {
+			width: 100%;
+			height: 450px;
+			object-fit: cover;
+			border-radius: 2px;
+		}
+
+		.about-content h2 {
+			font-size: 2.2rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.about-content p {
+			color: var(--text-muted);
+			margin-bottom: 1.2rem;
+			font-size: 0.95rem;
+		}
+
+		/* Contact Section */
+		.contact-section {
+			display: grid;
+			grid-template-columns: 1.2fr 1fr;
+			gap: 4rem;
+			align-items: start;
+		}
+
+		.contact-form h2 {
+			font-size: 2.2rem;
+			margin-bottom: 1rem;
+		}
+
+		.contact-form p {
+			color: var(--text-muted);
+			margin-bottom: 2rem;
+			font-size: 0.95rem;
+		}
+
+		.form-group {
+			margin-bottom: 1.5rem;
+		}
+
+		.form-label {
+			display: block;
+			font-size: 0.85rem;
+			color: var(--text-muted);
+			margin-bottom: 0.5rem;
+		}
+
+		.form-input, .form-textarea {
+			width: 100%;
+			background: #111318;
+			border: 1px solid var(--border-color);
+			padding: 0.9rem 1rem;
+			color: var(--text-color);
+			border-radius: 4px;
+			font-family: inherit;
+			font-size: 0.95rem;
+		}
+
+		.form-input:focus, .form-textarea:focus {
+			outline: none;
+			border-color: var(--text-color);
+		}
+
+		.form-textarea {
+			height: 150px;
+			resize: vertical;
+		}
+
+		.submit-btn {
+			background: #22252e;
+			color: var(--text-color);
+			border: 1px solid var(--border-color);
+			padding: 0.8rem 2rem;
+			border-radius: 4px;
+			cursor: pointer;
+			font-family: inherit;
+			font-size: 0.95rem;
+			transition: background 0.2s;
+		}
+
+		.submit-btn:hover {
+			background: #333846;
+		}
+
+		/* Connect / Socials Section */
+		.connect-box {
+			text-align: center;
+			padding: 3rem 0;
+		}
+
+		.connect-box h2 {
+			font-size: 2rem;
+			margin-bottom: 0.75rem;
+		}
+
+		.connect-box p {
+			color: var(--text-muted);
+			font-size: 0.95rem;
+			margin-bottom: 1rem;
+		}
+
+		.social-links {
+			display: flex;
+			justify-content: center;
+			gap: 1.5rem;
+			font-size: 0.95rem;
+			text-decoration: underline;
+			color: var(--text-muted);
+		}
+
+		.social-links a:hover {
+			color: var(--text-color);
+		}
+
+		/* Footer */
+		footer {
+			padding: 3rem 0 4rem 0;
+			display: flex;
+			justify-content: center;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 768px) {
+			.work-grid, .about-section, .contact-section {
+				grid-template-columns: 1fr;
+				gap: 2.5rem;
+			}
+			.hero-banner {
+				height: 250px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+		<!-- ================= NAVIGATION ================= -->
+		<nav>
+			<div class="nav-links">
+				<!-- PASTE YOUR NAVIGATION LINKS HERE -->
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+				<!-- PASTE YOUR RESUME LINK / PDF FILE HERE -->
+				<a href="#" target="_blank">Resume</a>
+			</div>
+		</nav>
+
+		<!-- ================= HERO SECTION ================= -->
+		<header id="home">
+			<div class="hero-banner">
+				<!-- PASTE YOUR LOGO / NAME & SUBTITLE HERE -->
+				<div class="container" style="position: relative; height: 100%;">
+					<h1 class="logo-title">yourname // design</h1>
+				</div>
+			</div>
+			<!-- PASTE YOUR MAIN TAGLINE / BIO SUMMARY BELOW -->
+			<p class="hero-tagline">
+				I'm a product designer who believes in making useful things beautiful, and beautiful things meaningful.
+			</p>
+		</header>
+
+		<div class="divider"></div>
+
+		<!-- ================= WORK SECTION ================= -->
+		<section id="work">
+			<h2 class="section-title">My Work</h2>
+            
+			<div class="work-grid">
+				<!-- Project Item 1 -->
+				<div class="work-card">
+					<!-- PASTE PROJECT 1 IMAGE LINK HERE -->
+					<img src="https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=800&auto=format&fit=crop" alt="Project 1" class="work-image">
+					<div class="work-info">
+						<!-- PASTE PROJECT 1 TITLE AND DESCRIPTION HERE -->
+						<h3>Project Title One</h3>
+						<p>Product design, mobile application, and user experience workflow.</p>
+					</div>
+				</div>
+
+				<!-- Project Item 2 -->
+				<div class="work-card">
+					<!-- PASTE PROJECT 2 IMAGE LINK HERE -->
+					<img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800&auto=format&fit=crop" alt="Project 2" class="work-image">
+					<div class="work-info">
+						<!-- PASTE PROJECT 2 TITLE AND DESCRIPTION HERE -->
+						<h3>Project Title Two</h3>
+						<p>Brand identity, art direction, and editorial design publication.</p>
+					</div>
+				</div>
+
+				<!-- Project Item 3 -->
+				<div class="work-card">
+					<!-- PASTE PROJECT 3 IMAGE LINK HERE -->
+					<img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop" alt="Project 3" class="work-image">
+					<div class="work-info">
+						<!-- PASTE PROJECT 3 TITLE AND DESCRIPTION HERE -->
+						<h3>Project Title Three</h3>
+						<p>Interactive prototyping and immersive digital experience.</p>
+					</div>
+				</div>
+
+				<!-- Project Item 4 -->
+				<div class="work-card">
+					<!-- PASTE PROJECT 4 IMAGE LINK HERE -->
+					<img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" alt="Project 4" class="work-image">
+					<div class="work-info">
+						<!-- PASTE PROJECT 4 TITLE AND DESCRIPTION HERE -->
+						<h3>Project Title Four</h3>
+						<p>Design systems, component libraries, and frontend architecture.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<!-- ================= ABOUT SECTION ================= -->
+		<section id="about" class="about-section">
+			<div class="about-img-container">
+				<!-- PASTE YOUR PORTRAIT IMAGE LINK HERE -->
+				<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Profile Portrait" class="about-image">
+			</div>
+			<div class="about-content">
+				<!-- PASTE YOUR ABOUT TITLE & PARAGRAPHS HERE -->
+				<h2>Hey there!</h2>
+				<p><strong>I'm a location-based Product Designer with a passion for user-centered design, typography, and problem-solving.</strong></p>
+				<p>I earned my degree in design and spent my early career working with global teams, multinational apps, and innovative studios to craft seamless digital experiences.</p>
+				<p>In my work, I approach design with a focus on usability and innovation, ensuring every experience is intuitive, engaging, and built for the future with meticulous attention to detail.</p>
+			</div>
+		</section>
+
+		<div class="divider"></div>
+
+		<!-- ================= CONTACT SECTION ================= -->
+		<section id="contact" class="contact-section">
+			<div class="contact-form">
+				<!-- PASTE YOUR CONTACT HEADER & EMAIL HERE -->
+				<h2>Get in touch!</h2>
+				<p>Send me an email at <a href="mailto:your_email@gmail.com" style="text-decoration: underline;">your_email@gmail.com</a> or drop a message here!</p>
+                
+				<!-- PASTE YOUR FORM ACTION URL OR HANDLER (e.g., Formspree) -->
+				<form action="#" method="POST">
+					<div class="form-group">
+						<label class="form-label">Email</label>
+						<input type="email" name="email" class="form-input" placeholder="Your email" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Name</label>
+						<input type="text" name="name" class="form-input" placeholder="Your name" required>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Message</label>
+						<textarea name="message" class="form-textarea" placeholder="Write your message here..." required></textarea>
+					</div>
+					<button type="submit" class="submit-btn">Send email</button>
+				</form>
+			</div>
+
+			<!-- Optional Right Column Portrait (matching layout screenshot #3) -->
+			<div class="about-img-container" style="margin-top: 2rem;">
+				<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop" alt="Contact Portrait" class="about-image">
+			</div>
+		</section>
+
+		<!-- ================= CONNECT / SOCIALS SECTION ================= -->
+		<div class="connect-box">
+			<!-- PASTE SOCIAL PROFILES DESCRIPTION HERE -->
+			<h2>Let's connect!</h2>
+			<p>Want to stay up-to-date with my work? Follow me on my socials:</p>
+			<div class="social-links">
+				<!-- PASTE YOUR SOCIAL MEDIA LINKS HERE -->
+				<a href="https://instagram.com" target="_blank">Instagram</a>
+				<a href="https://linkedin.com" target="_blank">LinkedIn</a>
+				<a href="https://dribbble.com" target="_blank">Dribbble</a>
+			</div>
+		</div>
+
+		<div class="divider" style="margin-bottom: 0;"></div>
+
+		<!-- ================= FOOTER ================= -->
+		<footer>
+			<div class="nav-links">
+				<a href="#home">Home</a>
+				<a href="#about">About</a>
+				<a href="#contact">Contact</a>
+				<a href="#" target="_blank">Resume</a>
+			</div>
+		</footer>
+	</div>
+
+</body>
+</html>
